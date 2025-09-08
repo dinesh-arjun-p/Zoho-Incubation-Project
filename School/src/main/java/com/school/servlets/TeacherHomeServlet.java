@@ -1,0 +1,37 @@
+package com.school.servlets;
+
+import com.school.model.RequestAccess;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+import java.io.IOException;
+import java.util.List;
+
+@WebServlet("/TeacherHomeServlet")
+public class TeacherHomeServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("uname") == null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
+
+        String teacherName = (String) session.getAttribute("uname");
+
+        DAO dao = new DAO();
+        List<RequestAccess> pendingRequests = dao.getPendingRequests(); 
+        System.out.println("Servlet Requests fetched: " + pendingRequests.size());
+
+        request.setAttribute("teacherName", teacherName);
+        request.setAttribute("requests", pendingRequests);
+
+        request.getRequestDispatcher("/WEB-INF/TeacherHome.jsp").forward(request, response);
+    }
+}
