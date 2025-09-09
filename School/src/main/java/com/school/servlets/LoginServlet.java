@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
 		        session.setAttribute("rollNo", userInfo.getRollNo());
 		        session.setAttribute("uname", uname);
 		        session.setAttribute("role", userInfo.getRole());
-		        System.out.println(session.getAttribute("rollNo"));
+		        ld.recordLogin( userInfo.getRollNo());
 
 		        response.sendRedirect("Home.jsp");
 		    } 

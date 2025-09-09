@@ -27,10 +27,11 @@ public class TeacherHomeServlet extends HttpServlet {
 
         DAO dao = new DAO();
         List<RequestAccess> pendingRequests = dao.getPendingRequests(); 
-        System.out.println("Servlet Requests fetched: " + pendingRequests.size());
-
-        request.setAttribute("teacherName", teacherName);
-        request.setAttribute("requests", pendingRequests);
+        
+        List<RequestAccess> allViewedRequests = dao.getAllViewedRequests(); 
+        session.setAttribute("allViewed", allViewedRequests);
+        session.setAttribute("teacherName", teacherName);
+        session.setAttribute("requests", pendingRequests);
 
         request.getRequestDispatcher("/WEB-INF/TeacherHome.jsp").forward(request, response);
     }

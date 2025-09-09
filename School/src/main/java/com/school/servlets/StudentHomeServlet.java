@@ -26,8 +26,10 @@ public class StudentHomeServlet extends HttpServlet {
         // fetch all requests made by this student
         DAO dao = new DAO();
         List<RequestAccess> requests = dao.getRequestedByStudent((String) session.getAttribute("rollNo"));
+        List<Notification> notify = dao.getNotificationsForStudent((String) session.getAttribute("rollNo"));
         // set data for JSP
         request.setAttribute("requests", requests);
+        request.setAttribute("notifications", notify);
         // forward to JSP
         request.getRequestDispatcher("/WEB-INF/StudentHome.jsp").forward(request, response);
     }

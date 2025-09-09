@@ -15,9 +15,9 @@ import jakarta.servlet.http.HttpSession;
 public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession(false);
-		String uname=(String) session.getAttribute("uname");
+		String rollNo=(String) session.getAttribute("rollNo");
 		DAO dao = new DAO();
-	    dao.recordLogout(uname); 
+	    dao.recordLogout(rollNo); 
 	
 		session.invalidate();
 		response.sendRedirect("login.jsp");
