@@ -90,28 +90,30 @@ public class DAO {
 
 
 	
-	public boolean createUser(String uname, String password, int roleId) {
-	    String sql = "INSERT INTO person (roll_no, name, pass, role_id) VALUES (?, ?, ?, ?)";
-	    try (Connection con = (Connection) DBUtil.getConnection()) {
-	        
-	        // Generate roll_no first
-	        String rollNo = generateRollNo(roleId, con);
+	public boolean createUser(String name, String password, int roleId, String email) {
+		String sql = "INSERT INTO person (roll_no, name, pass, role_id, email) VALUES (?, ?, ?, ?, ?)";
+    try (Connection con = DBUtil.getConnection()) {
 
-	        try (PreparedStatement st = con.prepareStatement(sql)) {
-	            st.setString(1, rollNo);
-	            st.setString(2, uname);
-	            st.setString(3, password);
-	            st.setInt(4, roleId);
+        // Generate roll_no first
+        String rollNo = generateRollNo(roleId, con);
 
-	            int rows = st.executeUpdate();
-	            return rows > 0;
-	        }
+        try (PreparedStatement st = con.prepareStatement(sql)) {
+            st.setString(1, rollNo);
+            st.setString(2, name);
+            st.setString(3, password);
+            st.setInt(4, roleId);
+            st.setString(5, email);
 
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	    return false;
-	}
+            int rows = st.executeUpdate();
+            return rows > 0;
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return false;
+}
+
 
 	
 	

@@ -59,8 +59,8 @@ create table notification(
     on update cascade
 );
 
-drop table user_login;
-create table user_login(
+drop table login_history;
+create table login_history(
 	id int auto_increment primary key,
     username varchar(100) not null,
     login_time datetime default current_timestamp,

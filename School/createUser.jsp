@@ -22,7 +22,8 @@
 
 <h2>Create New User</h2>
 <form action="createUser" method="post">
-    Username: <input type="text" name="uname"><br>
+    Name: <input type="text" name="name"><br>
+    Email: <input type="email" name="email"><br>
     Password: <input type="password" name="pass"><br>
     Role:
     <select name="role_id">
@@ -32,6 +33,8 @@
     </select><br>
     <input type="submit" value="Create">
 </form>
+
+
 	
 </body>
 </html>

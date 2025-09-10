@@ -22,10 +22,10 @@ import java.util.Base64;
 @WebServlet("/callback")
 public class CallBackServlet extends HttpServlet {
 
-    private static final String CLIENT_ID = "0oav99fetrToYpUlX697";  
-    private static final String CLIENT_SECRET = "HqhBo3hc_tD6ZAs8TBfezEWeuyUZmnbctN8bIBxzimkpqn6BZ7l0DoFz_CIv-ltd";  
+    private static final String CLIENT_ID = "0oavak3jfuTqZwEss697";  
+    private static final String CLIENT_SECRET = "T9y-1Xa7OMf2qwwkB7q26nOkJfbN3BVeSdVCTsmAu3JGbJuj2Rm7o1a60v9UgCLx";  
     private static final String REDIRECT_URI = "http://localhost:8080/School/callback";
-    private static final String TOKEN_URL = "https://trial-8526057.okta.com/oauth2/default/v1/token";
+    private static final String TOKEN_URL = "https://trial-3599609.okta.com/oauth2/default/v1/token";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -101,7 +101,6 @@ public class CallBackServlet extends HttpServlet {
 		    if (userInfo != null) {
 		        session.setAttribute("rollNo", userInfo.getRollNo());
 		        session.setAttribute("uname", userInfo.getName());
-		        session.setAttribute("role", userInfo.getRole());
 		        ld.recordLogin( userInfo.getRollNo());
 		    } 
             response.sendRedirect("Home.jsp");

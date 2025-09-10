@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
     private static final String OKTA_LOGOUT_URL =
-        "https://trial-8526057.okta.com/oauth2/default/v1/logout";
+        "https://trial-3599609.okta.com/oauth2/default/v1/logout";
     private static final String POST_LOGOUT_REDIRECT =
         "http://localhost:8080/School/login.jsp"; // must be added in Okta app "Sign-out redirect URIs"
 
